@@ -20,9 +20,9 @@ export const signUpDefaultValues = {
 };
 
 export const shippingAddressDefaultValues = {
-  fullName: "김현호",
-  streetAddress: "무지개로 144",
-  city: "성남시",
-  postalCode: "13623",
-  country: "대한민국",
+  fullName: "",
+  streetAddress: " ",
+  city: "",
+  postalCode: "",
+  country: "",
 };
