@@ -164,8 +164,7 @@ export async function removeItemFromCart(productId: string) {
 
     // Check for item
     const exist = (cart.items as CartItem[]).find(
-      (x) => x,
-      productId === productId
+      (x) => x.productId === productId
     );
     if (!exist) throw new Error("Item not found");
 
@@ -185,7 +184,7 @@ export async function removeItemFromCart(productId: string) {
     await prisma.cart.update({
       where: { id: cart.id },
       data: {
-        items: cart.items as CartItem[],
+        items: cart.items,
         ...calcPrice(cart.items as CartItem[]),
       },
     });
