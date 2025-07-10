@@ -45,7 +45,7 @@ const PlaceOrderPage = async () => {
       <div className="grid md:grid-cols-3 md:gap-5">
         <div className="md:col-span-2 overflow-x-auto space-y-4">
           <Card>
-            <CardContent className="p-4 gap-4">
+            <CardContent className="p-4 space-y-0.5">
               <h2 className="text-xl pb-4">Shipping Address</h2>
               <p>{userAddress.fullName}</p>
               <p>
@@ -80,7 +80,7 @@ const PlaceOrderPage = async () => {
                   <TableRow>
                     <TableHead>Item</TableHead>
                     <TableHead>Quantity</TableHead>
-                    <TableHead>Price</TableHead>
+                    <TableHead className="text-right">Price</TableHead>
                   </TableRow>
                 </TableHeader>
                 <TableBody>
@@ -115,7 +115,7 @@ const PlaceOrderPage = async () => {
         </div>
         <div>
           <Card>
-            <CardContent className="p-4 gap-4 space-y-4">
+            <CardContent className="p-4 space-y-4">
               <div className="flex justify-between">
                 <div>Items</div>
                 <div>{formatCurrency(cart.itemsPrice)}</div>
