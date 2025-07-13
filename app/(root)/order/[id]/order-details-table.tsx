@@ -23,7 +23,6 @@ import {
   createPayPalOrder,
   approvePayPalOrder,
 } from "@/lib/actions/order.actions";
-import { stat } from "fs";
 import { toast } from "sonner";
 
 const OrderDetailsTable = ({
