@@ -73,7 +73,7 @@ const OrderDetailsTable = ({
     const res = await approvePayPalOrder(order.id, data);
 
     if (res.success) {
-      toast.message(res.message);
+      toast.success(res.message);
     } else {
       toast.error(res.message);
     }
