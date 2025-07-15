@@ -17,6 +17,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
+import { updateUser } from "@/lib/actions/user.actions";
 import { USER_ROLES } from "@/lib/constants";
 import { updateUserSchema } from "@/lib/validators";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -36,8 +37,23 @@ const UpdateUserForm = ({
     defaultValues: user,
   });
 
-  const onSubmit = () => {
-    return;
+  const onSubmit = async (values: z.infer<typeof updateUserSchema>) => {
+    try {
+      const res = await updateUser({
+        ...values,
+        id: user.id,
+      });
+
+      if (res.success) {
+        toast.success(res.message);
+        form.reset();
+        router.push("/admin/users");
+      } else {
+        toast.error(res.message);
+      }
+    } catch (error) {
+      toast.error((error as Error).message);
+    }
   };
 
   return (
@@ -72,7 +88,7 @@ const UpdateUserForm = ({
         </div>
 
         {/* Name */}
-        <div className="mt-2">
+        <div className="mt-4">
           <FormField
             control={form.control}
             name="name"
@@ -95,7 +111,7 @@ const UpdateUserForm = ({
           />
         </div>
         {/* Role */}
-        <div className="mt-2">
+        <div className="mt-4">
           <FormField
             control={form.control}
             name="role"
@@ -131,7 +147,7 @@ const UpdateUserForm = ({
             )}
           />
         </div>
-        <div className="flex-between mt-4">
+        <div className="flex-between mt-6">
           <Button
             type="submit"
             className="w-full"
