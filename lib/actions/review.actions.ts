@@ -72,12 +72,12 @@ export async function createUpdateReview(
       });
 
       revalidatePath(`/product/${product.slug}`);
-
-      return {
-        success: true,
-        message: "Review updated successfully",
-      };
     });
+
+    return {
+      success: true,
+      message: "Review updated successfully",
+    };
   } catch (error) {
     return {
       success: false,
